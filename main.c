@@ -14,8 +14,20 @@ void check_answer(char *c){
     if(*c=='Y' || *c=='y' || *c=='N' || *c=='n'){
       flag = false;
     } else{
-      printf("Please, insert a correct value (y/n): ");
-      scanf(" %c", &c);
+      printf("Please, insert a valid input (y/n): ");
+      scanf(" %c", c);
+    }
+  }while(flag);
+}
+
+void check_choice(int *choice){
+  bool flag = true;
+  do{
+    if(*choice != 0 && *choice != 1 && *choice != 2){
+      printf("Please, insert a valid input (rock = 0, paper = 1, scissor = 2): ");
+      scanf("%d", choice);
+    } else {
+      flag = false;
     }
   }while(flag);
 }
@@ -38,6 +50,7 @@ int main(){
   do{
     printf("Choose rock (0), paper (1) or scissor (2): ");
     scanf("%d", &you);
+    check_choice(&you);
     cpu = rand() % 3; // number between 0-2
     if (cpu == 0 && you == 2){
       printf("Rock Vs Scissor, CPU win!\n");
