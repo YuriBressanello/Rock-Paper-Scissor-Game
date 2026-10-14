@@ -81,7 +81,6 @@ int main(){
     printf("Do you want to play again? (y/n): ");
     scanf(" %c", &answer);
     check_answer(&answer);
-    //se la risposta è diversa da y/Y/n/N deve inserire una risposta valida
   }while(answer!='n');
 
   printf("FINISH -- TOTAL SCORE\n");
