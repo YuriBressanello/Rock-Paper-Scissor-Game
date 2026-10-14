@@ -3,13 +3,27 @@
 #include <stdlib.h>
 
 void show_result(int cwc, int cwy){
-  printf("CPU: %d - YOU: %d\n", cwc, cwy);
+  printf("|||||||||||||||||||||\n");
+  printf("|| CPU: %d - YOU: %d ||\n", cwc, cwy);
+  printf("|||||||||||||||||||||\n");
+}
+
+void check_answer(char *c){
+  bool flag = true;
+  do{
+    if(*c=='Y' || *c=='y' || *c=='N' || *c=='n'){
+      flag = false;
+    } else{
+      printf("Please, insert a correct value (y/n): ");
+      scanf(" %c", &c);
+    }
+  }while(flag);
 }
 
 int main(){
 
   srand(time(NULL));
-  //rock = 0, paper = 1 scissor = 2
+
   int rock = 0;
   int paper = 1;
   int scissor = 2;
@@ -53,7 +67,12 @@ int main(){
     show_result(counter_win_cpu, counter_win_you);
     printf("Do you want to play again? (y/n): ");
     scanf(" %c", &answer);
+    check_answer(&answer);
+    //se la risposta è diversa da y/Y/n/N deve inserire una risposta valida
   }while(answer!='n');
+
+  printf("FINISH -- TOTAL SCORE\n");
+  show_result(counter_win_cpu, counter_win_you); 
 
   printf("See you next time \U0001F44B!\n");
 
