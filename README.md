@@ -41,7 +41,7 @@ $$(1 - 0 + 3) \pmod 3 = 4 \pmod 3 = 1 \quad \implies \mathbf{You\ Win!}$$
    git clone https://github.com/YuriBressanello/Rock-Paper-Scissor-Game.git
 2. Enter in the directory and write inside the terminal:
    ```bash
-   cd rock-paper-scissor
+   cd Rock-Paper-Scissor-Game
    gcc main.c -o main.exe
 4. Run it and enjoy =)
    ```bash
