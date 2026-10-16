@@ -38,7 +38,7 @@ $$(1 - 0 + 3) \pmod 3 = 4 \pmod 3 = 1 \quad \implies \mathbf{You\ Win!}$$
 
 1. Open the terminal and clone the repository:
    ```bash
-   git clone [https://github.com/your-username/rock-paper-scissors-c.git](https://github.com/your-username/rock-paper-scissors-c.git)
+   git clone https://github.com/your-username/rock-paper-scissors.git
 2. Enter in the directory and write inside the terminal:
    "cd rock-paper-scissor-c", "gcc main.c -o main.exe"
 3. Run it and enjoy =)
