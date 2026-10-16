@@ -40,6 +40,9 @@ $$(1 - 0 + 3) \pmod 3 = 4 \pmod 3 = 1 \quad \implies \mathbf{You\ Win!}$$
    ```bash
    git clone https://github.com/your-username/rock-paper-scissors.git
 2. Enter in the directory and write inside the terminal:
-   "cd rock-paper-scissor-c", "gcc main.c -o main.exe"
-3. Run it and enjoy =)
-   "./main.exe" and then press Enter
+   ```bash
+   cd rock-paper-scissor
+   gcc main.c -o main.exe
+4. Run it and enjoy =)
+   ```bash
+   ./main.exe
