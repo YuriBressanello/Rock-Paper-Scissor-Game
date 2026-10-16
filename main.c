@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdbool.h>
 #include <stdlib.h>
 
 void show_result(int cwc, int cwy){
@@ -21,15 +22,10 @@ void check_answer(char *c){
 }
 
 void check_choice(int *choice){
-  bool flag = true;
-  do{
-    if(*choice != 0 && *choice != 1 && *choice != 2){
-      printf("Please, insert a valid input (rock = 0, paper = 1, scissor = 2): ");
-      scanf("%d", choice);
-    } else {
-      flag = false;
-    }
-  }while(flag);
+  while(*choice<0 || *choice>2){
+    printf("Please, insert a valid input (rock = 0, paper = 1, scissor = 2): ");
+    scanf("%d", choice);
+  }
 }
 
 int main(){
@@ -40,48 +36,40 @@ int main(){
   int paper = 1;
   int scissor = 2;
 
-  int cpu;
-  int you;
+  int cpu, you, res, mod;
   char answer;
 
   int counter_win_cpu = 0;
   int counter_win_you = 0;
+
+  const char *names [] = {"Rock", "Paper", "Scissor"};
+
+  // rock 0, paper 1, scissor 2
 
   do{
     printf("Choose rock (0), paper (1) or scissor (2): ");
     scanf("%d", &you);
     check_choice(&you);
     cpu = rand() % 3; // number between 0-2
-    if (cpu == 0 && you == 2){
-      printf("Rock Vs Scissor, CPU win!\n");
-      counter_win_cpu++;
-    } else if (cpu == 0 && you == 1){
-      printf("Rock Vs Paper, you win!\n");
+
+    //FORMULA: you win if res = (you-cpu + 3), res%mod==1
+    res = you - cpu + 3;
+    mod = res%3;
+    if (mod==1) {
       counter_win_you++;
-    } else if (cpu == 0 && you == 0){
-      printf("Rock Vs Rock, a boring draw...\n");
-    } else if (cpu == 1 && you == 0){
-      printf("Paper Vs Rock, CPU win!\n");
+      printf("%s Vs %s, you win!\n", names[you], names[cpu]);
+    } else if (mod == 0){
+      printf("%s Vs %s, a boring draw...\n", names[you], names[cpu]);
+    } else {
       counter_win_cpu++;
-    } else if (cpu == 1 && you == 2){
-      printf("Scissor Vs Paper, you win!\n");
-      counter_win_you++;
-    } else if (cpu == 1 && you == 1){
-      printf("Paper Vs Paper, a boring draw...\n");
-    } else if (cpu == 2 && you == 1){
-      printf("Scissor Vs Paper, CPU win!\n");
-      counter_win_cpu++;
-    } else if (cpu == 2 && you == 0){
-      printf("Scissor Vs Rock, you win!\n");
-      counter_win_you++;
-    } else if (cpu == 2 && you == 2){
-      printf("Rock Vs Rock, a boring draw...\n");
+      printf("%s Vs %s, you lose =(\n", names[cpu], names[you]);
     }
+
     show_result(counter_win_cpu, counter_win_you);
     printf("Do you want to play again? (y/n): ");
     scanf(" %c", &answer);
     check_answer(&answer);
-  }while(answer!='n');
+  }while(answer!='n' && answer!='N');
 
   printf("FINISH -- TOTAL SCORE\n");
   show_result(counter_win_cpu, counter_win_you); 
